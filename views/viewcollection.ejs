@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= collection.title %> - Recommendations</title>
+    <style>
+        body {
+            font-family: 'Helvetica Neue', Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 100px auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            text-align: center;
+            color: #333;
+            margin-bottom: 20px;
+            font-size: 24px;
+        }
+
+        .recommendation-box {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            justify-content: center;
+        }
+
+        .recommendation-card {
+            background-color: #ffffff;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            padding: 15px;
+            width: calc(30% - 20px);
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s;
+        }
+
+        .recommendation-card:hover {
+            transform: scale(1.05);
+        }
+
+        .recommendation-title {
+            font-weight: bold;
+            color: #007BFF;
+            font-size: 18px;
+            margin-bottom: 10px;
+        }
+
+        .recommendation-caption {
+            margin-bottom: 10px;
+        }
+
+        .recommendation-category {
+            color: #555;
+            font-size: 14px;
+        }
+
+        @media screen and (max-width: 900px) {
+            .recommendation-card {
+                width: calc(45% - 20px);
+            }
+        }
+
+        @media screen and (max-width: 600px) {
+            .recommendation-card {
+                width: calc(100% - 20px);
+            }
+        }
+    </style>
+</head>
+<body>
+    <a href="/users/logout" class="btn">Logout</a>
+    <div class="container">
+        <h3><a href="/recommndations/collection/list">Back to All Collection</a></h3>
+        <h1><%= collection.title %> Collection</h1>
+        <% if (messages.error) { %>
+            <div class="error-messages">
+                <%= messages.error %>
+            </div>
+        <% } %>
+        <div class="recommendation-box">
+            <% if (collection.Collection_recommendations.length > 0) { %>
+                <% collection.Collection_recommendations.forEach(item => { %>
+                    <div class="recommendation-card">
+                        <div class="recommendation-title"><%= item.Recommendation.title %></div>
+                        <div class="recommendation-caption"><%= item.Recommendation.caption %></div>
+                        <div class="recommendation-category">Category: <%= item.Recommendation.category %></div>
+                        <a href='/recommndations/collection/deleterecommendation/<%=item.id%>/<%=collection.id%>' type="btn">Delete</button>
+                    </div>
+                <% }); %>
+            <% } else { %>
+                <p>No recommendations available in this collection.</p>
+            <% } %>
+        </div>
+    </div>
+</body>
+</html>
