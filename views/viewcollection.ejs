@@ -96,6 +96,7 @@
                         <div class="recommendation-caption"><%= item.Recommendation.caption %></div>
                         <div class="recommendation-category">Category: <%= item.Recommendation.category %></div>
                         <a href='/recommndations/collection/deleterecommendation/<%=item.id%>/<%=collection.id%>' type="btn">Delete</button>
+                            <a href='/recommndations/recommandation/sview/<%=item.id%>' type="btn">View</button>
                     </div>
                 <% }); %>
             <% } else { %>

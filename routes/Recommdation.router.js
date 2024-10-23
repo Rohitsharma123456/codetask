@@ -8,7 +8,7 @@ router.get("/create",(req,res)=>{
     return res.render("createrecommendation")
 })
 router.post('/', async (req, res) => {
-    const { title, caption, category } = req.body;
+    const { title, caption, category,content,image } = req.body;
     const user_id=req.session.userId
     try {
         const newRecommendation = await db.Recommendation.create({
@@ -16,6 +16,8 @@ router.post('/', async (req, res) => {
             title,
             caption,
             category,
+            content,
+            image
         });
         res.redirect("/recommndations")
     } catch (err) {
@@ -215,6 +217,27 @@ router.get('/collection/view/:id', async (req, res) => {
         //  return res.json(collections)
         res.render("viewcollection",{
             collection,
+            messages
+        })
+    } catch (err) {
+        console.error(err);
+        res.status(500).json({ message: 'Failed to retrieve recommendations.' });
+    }
+});
+router.get('/recommandation/sview/:id', async (req, res) => {
+    
+
+    try {
+        const {id}=req.params
+       
+         const collection = await db.Recommendation.findAll({where:{id:id}});
+         const messages = {
+            error: req.flash('error'),
+            // Add other message types if necessary
+        };
+        //  return res.json(collections)
+        res.render("viewarticle",{
+            recommendations:collection,
             messages
         })
     } catch (err) {

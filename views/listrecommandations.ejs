@@ -125,6 +125,7 @@
                         <div class="action-buttons">
                          
                             <a href="/recommndations/collection/addtocollection/<%= recommendation.id %>" class="btn">+collection</a>
+                            <a href='/recommndations/recommandation/sview/<%=recommendation.id%>' type="btn" class="btn">View</a>
                             <form action="/recommndations/deleterecommandation/<%= recommendation.id %>" method="get" style="display:inline;">
                                 <button type="submit" class="btn">Delete</button>
                             </form>

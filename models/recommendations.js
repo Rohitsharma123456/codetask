@@ -20,12 +20,20 @@ const Recommendation = sequelize.define('Recommendation', {
         type: DataTypes.STRING(255),
         allowNull: false
     },
+    image:{
+        type: DataTypes.TEXT,
+        allowNull: true
+    },
     caption: {
         type: DataTypes.TEXT,
         allowNull: true
     },
     category: {
         type: DataTypes.STRING(50),
+        allowNull: false
+    },
+    content: {
+        type: DataTypes.TEXT,
         allowNull: false
     },
     created_at: {

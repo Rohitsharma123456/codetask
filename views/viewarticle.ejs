@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Recommendations</title>
+    <style>
+        /* Container */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+    font-family: Arial, sans-serif;
+}
+
+h1 {
+    text-align: center;
+    font-size: 2.5em;
+    margin-bottom: 20px;
+}
+
+/* Recommendation Card */
+.recommendation-card {
+    display: flex;
+    flex-direction: row;
+    background-color: #f9f9f9;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+    padding: 20px;
+    transition: transform 0.3s ease;
+}
+
+.recommendation-card:hover {
+    transform: translateY(-10px);
+}
+
+/* Image */
+.recommendation-image {
+    max-width: 200px;
+    max-height: 150px;
+    border-radius: 10px;
+    margin-right: 20px;
+    object-fit: cover;
+}
+
+/* Recommendation Content */
+.recommendation-content {
+    flex-grow: 1;
+}
+
+h2 {
+    margin: 0;
+    font-size: 1.8em;
+    color: #333;
+}
+
+.category {
+    font-size: 0.9em;
+    color: #777;
+    margin-bottom: 10px;
+}
+
+.caption {
+    font-style: italic;
+    color: #555;
+}
+
+.content {
+    margin-top: 10px;
+    color: #444;
+    line-height: 1.5;
+}
+
+/* Footer */
+.footer {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 15px;
+}
+
+.user-info, .date {
+    font-size: 0.8em;
+    color: #888;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .recommendation-card {
+        flex-direction: column;
+    }
+    
+    .recommendation-image {
+        max-width: 100%;
+        margin-bottom: 20px;
+    }
+}
+
+    </style>
+    <!-- Link to External CSS -->
+    <link rel="stylesheet" href="/css/styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+</head>
+<body>
+    <div class="container">
+        <h1>Recommendations</h1>
+        
+        <div class="recommendations-list">
+            <% recommendations.forEach(function(recommendation) { %>
+                <div class="recommendation-card">
+                    <% if (recommendation.image) { %>
+                        <img src="<%= recommendation.image %>" alt="<%= recommendation.title %>" class="recommendation-image">
+                    <% } %>
+                    <div class="recommendation-content">
+                        <h2><%= recommendation.title %></h2>
+                        <p class="category"><%= recommendation.category %></p>
+                        <p class="caption"><%= recommendation.caption %></p>
+                        <p class="content"><%= recommendation.content %></p>
+                        <div class="footer">
+                            <span class="user-info">Posted by User ID: <%= recommendation.user_id %></span>
+                            <span class="date">Created at: <%= new Date(recommendation.created_at).toLocaleDateString() %></span>
+                        </div>
+                    </div>
+                </div>
+            <% }); %>
+        </div>
+    </div>
+</body>
+</html>

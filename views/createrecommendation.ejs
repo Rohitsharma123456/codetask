@@ -66,16 +66,26 @@ input[type="password"]:focus {
 
 button {
     width: 100%;
-    padding: 12px;
+    padding: 18px;
     font-size: 16px;
     background-color: #007BFF;
     color: white;
     border: none;
-    border-radius: 5px;
+    border-radius: 20px;
     cursor: pointer;
     transition: background-color 0.3s ease;
 }
-
+.btn {
+    width: 50%;
+    padding: 18px;
+    font-size: 16px;
+    background-color: #007BFF;
+    color: white;
+    border: none;
+    border-radius: 20px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
 button:hover {
     background-color: #0056b3;
 }
@@ -117,14 +127,18 @@ button:hover {
       
 
         <label for="title">Title:</label>
-        <input type="text" name="title" required>
+        <input type="text" name="title" required></br>
 
         <label for="caption">Caption:</label>
-        <textarea name="caption"></textarea>
+        <textarea name="caption"></textarea></br>
 
         <label for="category">Category:</label>
-        <input type="text" name="category" required>
-
+        <input type="text" name="category" required></br>
+        <label for="category">Content:</label>
+        <textarea rows="20" name="content" required></textarea></br>
+        <label for="category">Image:</label>
+        <input type="text" name="image" required></br></br>
+        
         <button type="submit">Add Recommendation</button>
     </form>
    
